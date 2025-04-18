@@ -10,14 +10,15 @@ import { useGetCallById } from "@/hooks/useGetCallById";
 import { StreamCall, StreamTheme } from "@stream-io/video-react-sdk";
 import { useState } from "react";
 
-// Update the props type to match Next.js App Router requirements
-type PageProps = {
+// Use a different name to avoid conflicts with Next.js built-in types
+type MeetingPageParams = {
   params: {
     id: string;
   };
+  searchParams?: Record<string, string | string[] | undefined>;
 };
 
-function Meeting({ params }: PageProps) {
+export default function Meeting({ params }: MeetingPageParams) {
   const [isSetupComplete, setIsSetupComplete] = useState(false);
   const { call, isLoading } = useGetCallById(params.id);
 
@@ -39,5 +40,3 @@ function Meeting({ params }: PageProps) {
     </>
   );
 }
-
-export default Meeting;
