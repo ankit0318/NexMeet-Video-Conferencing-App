@@ -1,0 +1,34 @@
+/* Custom styles for ReactDatePicker to remove orange outline on focus */
+.react-datepicker__input-container input:focus {
+  outline: none !important;
+  box-shadow: none !important;
+  border-color: transparent !important;
+}
+
+.react-datepicker__day--selected,
+.react-datepicker__day--keyboard-selected {
+  background-color: #247afd !important; /* Match your app's blue color */
+}
+
+.react-datepicker__time-list-item--selected {
+  background-color: #247afd !important; /* Match your app's blue color */
+}
+
+/* Remove focus rings from all datepicker elements */
+.react-datepicker__day:focus,
+.react-datepicker__month-text:focus,
+.react-datepicker__quarter-text:focus,
+.react-datepicker__year-text:focus,
+.react-datepicker__navigation:focus,
+.react-datepicker__time-container
+  .react-datepicker__time
+  .react-datepicker__time-box
+  ul.react-datepicker__time-list
+  li.react-datepicker__time-list-item:focus {
+  outline: none !important;
+}
+
+/* Ensure buttons don't show focus outline */
+button:focus {
+  outline: none !important;
+}
