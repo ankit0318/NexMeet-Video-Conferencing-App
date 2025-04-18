@@ -14,7 +14,7 @@ export const StreamVideoProvider = ({
 }) => {
   const { user, isLoaded } = useUser();
   const [videoClient, setVideoClient] = useState<StreamVideoClient>();
-  const [isInitializing, setIsInitializing] = useState(true);
+
 
   useEffect(() => {
     if (!isLoaded || !user) return;
@@ -25,7 +25,7 @@ export const StreamVideoProvider = ({
 
     const initClient = async () => {
       try {
-        setIsInitializing(true);
+       
         const client = new StreamVideoClient({
           apiKey: API_KEY,
           user: {
@@ -34,17 +34,13 @@ export const StreamVideoProvider = ({
             image: user?.imageUrl,
           },
           tokenProvider,
-          options: {
-            minWatchTimeoutMS: 3000,
-          },
+          options: {},
         });
 
         setVideoClient(client);
       } catch (error) {
         console.error("Error initializing Stream video client:", error);
-      } finally {
-        setIsInitializing(false);
-      }
+      } 
     };
 
     initClient();
@@ -52,7 +48,7 @@ export const StreamVideoProvider = ({
     return () => {
       videoClient?.disconnectUser();
     };
-  }, [user?.id, isLoaded]);
+  }, [user?.id, isLoaded,user,videoClient]);
 
   if (!videoClient) {
     return (

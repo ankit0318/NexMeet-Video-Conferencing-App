@@ -10,7 +10,7 @@ function SideBar() {
 
   // Memoize the navigation item to prevent unnecessary re-renders
   const NavItem = useCallback(
-    ({ link, index }: { link: any; index: number }) => {
+    ({ link, index }: { link: { route: string; imgURL: string; label: string }; index: number }) => {
       const isActive =
         pathname === link.route || pathname.startsWith(link.route);
 

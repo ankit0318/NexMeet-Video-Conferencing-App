@@ -36,7 +36,7 @@ const MeetingCard: React.FC<MeetingCardProps> = ({
   const [callDetails, setCallDetails] = useState<Call>();
   const [meetingLinkModal, setMeetingLinkModal] = useState(false);
   // Store the meeting ID separately to ensure it's available for the modal
-  const [currentMeetingId, setCurrentMeetingId] = useState<string>("");
+  // const [currentMeetingId, setCurrentMeetingId] = useState<string>("");
   const { user } = useUser();
   const client = useStreamVideoClient();
   // Use the current meeting ID for the link
@@ -67,7 +67,7 @@ const MeetingCard: React.FC<MeetingCardProps> = ({
         },
       });
       setCallDetails(call);
-      setCurrentMeetingId(call.id);
+      // setCurrentMeetingId(call.id);
        /* -------------------------------------------------------------------------- */
        //*not a best way to handle if description is empty and i want to show modal meeting link
        /* -------------------------------------------------------------------------- */
