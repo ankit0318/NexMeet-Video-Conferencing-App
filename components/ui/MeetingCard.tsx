@@ -142,6 +142,7 @@ const MeetingCard: React.FC<MeetingCardProps> = ({
           title: title,
           buttonText: "View Recordings",
           description: "Check out your meeting recordings",
+          handleOnClick: () => {router.push(`/recordings`)}, // Adjust the route as needed
         };
       case "join meeting":
         return {
@@ -155,6 +156,8 @@ const MeetingCard: React.FC<MeetingCardProps> = ({
               className="border-none w-full focus:outline-none rounded-lg p-2 bg-dark-3 focus-visible:ring-0 focus-visible:ring-offset-0"
             />
           ),
+
+          handleOnClick: () => {router.push(`${values.link}`)},
         };
       default:
         return {
