@@ -10,7 +10,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <ClerkProvider  appearance={{
+      <ClerkProvider afterSignOutUrl="/sign-in" appearance={{
           layout: {
             socialButtonsVariant: "iconButton",
             logoImageUrl: ICONS.VIDEO_CAMERA_PNG
@@ -25,6 +25,7 @@ export default function RootLayout({
           },
           
         }}>
+     
         <body className="bg-dark-2">
           {children}
           <Toaster />  
