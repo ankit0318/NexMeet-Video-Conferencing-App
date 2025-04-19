@@ -13,7 +13,7 @@ const MobileNavBar = memo(() => {
 
   return (
     <nav className="md:hidden fixed bottom-0 left-0 z-50 w-full overflow-hidden bg-dark-1 border-t border-neutral-800">
-      <div className="flex justify-around py-3">
+      <div className="flex justify-around items-center py-3">
         {sidebarLinks.map((link) => {
           const isActive = pathname === link.route;
 

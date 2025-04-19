@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import ICONS from "@/public/icons";
 import { SignedIn, UserButton } from "@clerk/nextjs";
-
+import MobileNavBar from "./MobileNavBar";
 
 const NavBar = () => {
   return (
@@ -22,12 +22,11 @@ const NavBar = () => {
           </Link>
         </div>
 
-        <div >
+        <div>
+          <MobileNavBar />
           <SignedIn>
-            <UserButton  />
+            <UserButton />
           </SignedIn>
-
-          
         </div>
       </div>
     </nav>

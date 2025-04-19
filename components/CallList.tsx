@@ -69,7 +69,7 @@ const CallList = ({ type }: { type: "ended" | "upcoming" | "recordings" }) => {
   const noCallsMessage = getNoCallsMessage();
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2  2xl:grid-cols-4 gap-6 px-2">
+    <div className="grid grid-cols-1 sm:grid-cols-2  2xl:grid-cols-4 gap-6">
       {calls && calls.length > 0 ? (
         calls.map((meeting: Call | CallRecording) => {
           // Type Guard to differentiate between Call and CallRecording
