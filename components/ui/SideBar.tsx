@@ -10,18 +10,25 @@ function SideBar() {
 
   // Memoize the navigation item to prevent unnecessary re-renders
   const NavItem = useCallback(
-    ({ link, index }: { link: { route: string; imgURL: string; label: string }; index: number }) => {
+    ({
+      link,
+      index,
+    }: {
+      link: { route: string; imgURL: string; label: string };
+      index: number;
+    }) => {
       const isActive =
-        pathname === link.route || pathname.startsWith(link.route);
+        pathname === link.route ||
+        (link.route !== "/" && pathname.startsWith(link.route));
 
       return (
         <Link
           href={link.route}
           key={index}
           prefetch={true}
-          className={`flex items-center md:gap-3 gap-0 px-4 py-3 rounded-lg transition-all duration-200 hover:bg-gray-800 ${
+          className={`flex items-center md:gap-3 gap-0 px-4 py-3 rounded-lg transition-all duration-200  ${
             isActive ? "bg-blue-600 text-white font-medium" : "text-gray-300"
-          } ${!isActive && "justify-center md:justify-start"}`}
+          } ${!isActive && "justify-center md:justify-start hover:bg-gray-800"}`}
         >
           <div className="flex items-center justify-center w-6 h-6">
             <Image
