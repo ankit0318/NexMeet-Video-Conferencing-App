@@ -6,7 +6,7 @@ import Loader from "@/components/ui/Loader";
 function Rootlayout({ children }: { children: React.ReactNode }) {
   return (
     <main>
-      <Toaster richColors position="top-center" />
+      
       <StreamVideoProvider>
         <Suspense fallback={<Loader />}>{children}</Suspense>
       </StreamVideoProvider>

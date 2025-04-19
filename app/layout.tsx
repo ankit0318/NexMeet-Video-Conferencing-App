@@ -27,7 +27,7 @@ export default function RootLayout({
         }}>
         <body className="bg-dark-2">
           {children}
-          <Toaster/>
+          <Toaster />  
         </body>
       </ClerkProvider>
     </html>
