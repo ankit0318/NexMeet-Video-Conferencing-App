@@ -7,6 +7,7 @@ import Loader from "./ui/Loader";
 import { useGetCalls } from "@/hooks/useGetCall";
 import SimpleCard from "./ui/SimpleCard";
 import ICONS from "@/public/icons";
+import Image from "next/image";
 
 // Simple Card component to replace MeetingCard
 
@@ -131,7 +132,33 @@ const CallList = ({ type }: { type: "ended" | "upcoming" | "recordings" }) => {
           );
         })
       ) : (
-        <h1 className="text-2xl font-bold text-white">{noCallsMessage}</h1>
+        <div className="col-span-full flex flex-col items-center justify-center py-12 px-4 text-center bg-dark-3/30 rounded-xl backdrop-blur-sm border border-white/5">
+          <div className="w-16 h-16 mb-6 rounded-full bg-dark-4/50 flex items-center justify-center">
+            <Image
+              src={
+                type === "recordings"
+                  ? ICONS.RECORDINGS
+                  : type === "upcoming"
+                  ? ICONS.UPCOMING
+                  : ICONS.PREVIOUS
+              }
+              alt="Icon"
+              className="w-8 h-8 opacity-70"
+              width={32}
+              height={32}
+            />
+          </div>
+          <h1 className="text-2xl font-bold text-white mb-2">
+            {noCallsMessage}
+          </h1>
+          <p className="text-gray-400 max-w-md">
+            {type === "recordings"
+              ? "When you record meetings, they will appear here for you to review."
+              : type === "upcoming"
+              ? "Schedule a meeting to see it appear in this list."
+              : "Your completed meetings will be shown here."}
+          </p>
+        </div>
       )}
     </div>
   );

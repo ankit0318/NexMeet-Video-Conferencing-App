@@ -20,11 +20,14 @@ interface MeetingCardProps {
   icon: ReactNode;
 }
 
+const initialDatePickerTime = new Date(new Date().getTime() + 60 * 60 * 1000);
+
 const initialValues = {
-  dateTime: new Date(),
+  dateTime: initialDatePickerTime,
   description: "",
   link: "",
 };
+
 const MeetingCard: React.FC<MeetingCardProps> = ({
   title,
   description,
@@ -33,6 +36,7 @@ const MeetingCard: React.FC<MeetingCardProps> = ({
 }) => {
   const router = useRouter();
   const [values, setValues] = useState(initialValues);
+
   const [callDetails, setCallDetails] = useState<Call>();
   const [meetingLinkModal, setMeetingLinkModal] = useState(false);
   // Store the meeting ID separately to ensure it's available for the modal
@@ -68,13 +72,12 @@ const MeetingCard: React.FC<MeetingCardProps> = ({
       });
       setCallDetails(call);
       // setCurrentMeetingId(call.id);
-       /* -------------------------------------------------------------------------- */
-       //*not a best way to handle if description is empty and i want to show modal meeting link
-       /* -------------------------------------------------------------------------- */
+      /* -------------------------------------------------------------------------- */
+      //*not a best way to handle if description is empty and i want to show modal meeting link
+      /* -------------------------------------------------------------------------- */
       if (!values.description && title.toLocaleLowerCase() === "new meeting") {
         router.push(`/meeting/${call.id}`);
       } else {
-        
         setMeetingLinkModal(true);
       }
       toast("Meeting Created");
@@ -105,7 +108,6 @@ const MeetingCard: React.FC<MeetingCardProps> = ({
           children: (
             <>
               <div className="flex flex-col gap-2.5">
-                
                 <label className="text-base font-normal leading-[22.4px] text-sky-2">
                   Add a description
                 </label>
@@ -142,7 +144,9 @@ const MeetingCard: React.FC<MeetingCardProps> = ({
           title: title,
           buttonText: "View Recordings",
           description: "Check out your meeting recordings",
-          handleOnClick: () => {router.push(`/recordings`)}, // Adjust the route as needed
+          handleOnClick: () => {
+            router.push(`/recordings`);
+          }, // Adjust the route as needed
         };
       case "join meeting":
         return {
@@ -157,7 +161,9 @@ const MeetingCard: React.FC<MeetingCardProps> = ({
             />
           ),
 
-          handleOnClick: () => {router.push(`${values.link}`)},
+          handleOnClick: () => {
+            router.push(`${values.link}`);
+          },
         };
       default:
         return {

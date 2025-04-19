@@ -23,7 +23,7 @@ const Table = ({
         <span className="w-2 h-2 bg-blue-500 rounded-full mr-2 animate-pulse"></span>
         {title}:
       </h1>
-      <h1 className="truncate text-sm font-bold max-sm:max-w-[320px] lg:text-xl">
+      <h1 className="truncate text-sm  max-sm:max-w-[320px] lg:text-xl text-sky-1">
         {description}
       </h1>
     </div>

@@ -40,7 +40,7 @@ function SideBar() {
               priority={isActive}
             />
           </div>
-          <span className="text-sm lg:block hidden">{link.label}</span>
+          <span className="text-md lg:block hidden">{link.label}</span>
         </Link>
       );
     },
