@@ -22,7 +22,7 @@ const MobileNavBar = memo(() => {
               href={link.route}
               prefetch={true}
               key={link.label}
-              className={`flex flex-col items-center gap-1 p-2 ${
+              className={`flex flex-col justify-center items-center gap-1 p-1  ${
                 isActive ? "text-white" : "text-neutral-400"
               }`}
             >
@@ -34,7 +34,7 @@ const MobileNavBar = memo(() => {
                 className={`${isActive ? "brightness-110" : "opacity-80"}`}
                 priority={isActive}
               />
-              <p className="text-xs">{link.label}</p>
+              <p className="text-xs ">{link.label}</p>
             </Link>
           );
         })}

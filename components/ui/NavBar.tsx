@@ -25,7 +25,12 @@ const NavBar = () => {
         <div>
           <MobileNavBar />
           <SignedIn>
-            <UserButton />
+            <UserButton appearance={{
+    elements: {
+      userButtonPopoverCard: "mt-6",
+      userButtonPopoverActionButton: "text-white hover:text-red-500", // increases top margin (moves dropdown down)
+    },
+  }}/>
           </SignedIn>
         </div>
       </div>

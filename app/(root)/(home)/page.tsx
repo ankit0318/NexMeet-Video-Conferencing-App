@@ -34,7 +34,8 @@ const meetingCards = [
 
 function Home() {
   return (
-    <div className="min-h-screen py-8 px-4 md:px-8">
+    
+    <div className="min-h-screen  py-8 px-4 md:px-8  max-md:mb-16">
       {/* Clock display with hero background */}
       <ClockDisplay />
 
