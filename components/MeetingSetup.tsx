@@ -33,11 +33,11 @@ function MeetingSetup({
   if (!call)
     throw new Error("useCall is not available in this stream call context");
 
-  // if (callTimeNotArrived)
-  //   alert(
-  //     `Your Meeting has not started yet. It is scheduled for ${callStartsAt.toLocaleString()}`
-  //   );
-  // if (callHasEnded) alert("The call has already ended.");
+  if (callTimeNotArrived)
+    alert(
+      `Your Meeting has not started yet. It is scheduled for ${callStartsAt.toLocaleString()}`
+    );
+  if (callHasEnded) alert("The call has already ended.");
 
   useEffect(() => {
     if (isMicCamToggled) {

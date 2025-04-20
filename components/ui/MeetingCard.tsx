@@ -13,6 +13,7 @@ import Loader from "./Loader";
 import { toast } from "sonner";
 import { v4 as uuidv4 } from "uuid";
 import ICONS from "@/public/icons";
+
 interface MeetingCardProps {
   title: string;
   description: string;
@@ -37,6 +38,7 @@ const MeetingCard: React.FC<MeetingCardProps> = ({
   const router = useRouter();
   const [values, setValues] = useState(initialValues);
 
+  const lowerCaseTitle:string = title.toLowerCase();
   const [callDetails, setCallDetails] = useState<Call>();
   const [meetingLinkModal, setMeetingLinkModal] = useState(false);
   // Store the meeting ID separately to ensure it's available for the modal
@@ -47,7 +49,12 @@ const MeetingCard: React.FC<MeetingCardProps> = ({
   const meetingLink = `${process.env.NEXT_PUBLIC_BASE_URL}/meeting/${callDetails?.id}`;
   // const meetingLink = `http://localhost:3000/meeting/${currentMeetingId}`;
   //function to join a meeting
-
+  const startsAt = (lowerCaseTitle: string) => {
+    if (lowerCaseTitle === "new meeting") {
+      return new Date(Date.now()).toISOString();
+    }
+    return new Date(values.dateTime).toISOString();
+  };
   const createMeeting = async () => {
     if (!client || !user) return;
     try {
@@ -59,12 +66,11 @@ const MeetingCard: React.FC<MeetingCardProps> = ({
       const id = uuidv4();
       const call = client.call("default", id);
       if (!call) throw new Error("Failed to create meeting");
-      const startsAt =
-        values.dateTime.toISOString() || new Date(Date.now()).toISOString();
+      
       const description = values.description || "Instant Meeting";
       await call.getOrCreate({
         data: {
-          starts_at: startsAt,
+          starts_at: startsAt(lowerCaseTitle),
           custom: {
             description,
           },
@@ -90,7 +96,7 @@ const MeetingCard: React.FC<MeetingCardProps> = ({
   //function to join a meeting
   const getModelContent = () => {
     // Convert title to lowercase for case-insensitive comparison
-    const lowerCaseTitle = title.toLowerCase();
+    
 
     switch (lowerCaseTitle) {
       case "new meeting":
