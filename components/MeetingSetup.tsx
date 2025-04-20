@@ -33,11 +33,11 @@ function MeetingSetup({
   if (!call)
     throw new Error("useCall is not available in this stream call context");
 
-  if (callTimeNotArrived)
-    alert(
-      `Your Meeting has not started yet. It is scheduled for ${callStartsAt.toLocaleString()}`
-    );
-  if (callHasEnded) alert("The call has already ended.");
+  // if (callTimeNotArrived)
+  //   alert(
+  //     `Your Meeting has not started yet. It is scheduled for ${callStartsAt.toLocaleString()}`
+  //   );
+  // if (callHasEnded) alert("The call has already ended.");
 
   useEffect(() => {
     if (isMicCamToggled) {
@@ -58,12 +58,12 @@ function MeetingSetup({
 
         {/* Video Preview */}
         <div className="w-full mb-8 relative">
-          <div className="aspect-video w-full max-h-[60vh] rounded-xl overflow-hidden shadow-xl border border-white/10 ring-2 ring-blue-500/20">
+          <div className="flex justify-center items-center w-full max-h-[60vh] rounded-xl overflow-hidden shadow-xl border border-white/10 ring-2 ring-blue-500/20">
             <VideoPreview />
           </div>
 
           {/* Status indicator */}
-          <div className="absolute top-4 left-4 bg-black/50 backdrop-blur-sm px-3 py-1.5 rounded-full flex items-center gap-2 text-sm font-medium border border-white/10">
+          <div className="absolute top-4 left-4 md:left-44 bg-black/50 backdrop-blur-sm px-3 py-1.5 rounded-full flex items-center gap-2 text-sm font-medium border border-white/10">
             <span className="w-2.5 h-2.5 bg-green-500 rounded-full animate-pulse"></span>
             <span>Preview Ready</span>
           </div>
